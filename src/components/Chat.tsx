@@ -5,20 +5,24 @@ import { Button } from "./ui/button"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "./ui/card"
 import { Input } from "./ui/input"
 import { useChat } from 'ai/react'
+import { ScrollArea } from "./ui/scroll-area"
 
 export function Chat() {
-    const { messages, input, handleInputChange, handleSubmit } = useChat();
+    const { messages, input, handleInputChange, handleSubmit } = useChat({
+        api: '/api/chat',
+    });
 
     return (
-        <Card className='w-[400px] h-[700px] grid grid-rows-[min-content_1fr_min-content]'>
+        <Card className='w-[400px]'>
             <CardHeader>
                 <CardTitle>Chat AI</CardTitle>
                 <CardDescription>Using Vercel SDK to create a chat bot.</CardDescription>
             </CardHeader>
-            <CardContent className='space-y-4'>
+            <CardContent>
+                <ScrollArea className="h-[640px] w-full pr-4">
                 { messages.map(message => {
                     return (
-                        <div key={message.id} className='flex gap-2 text-slate-600 text-sm'>
+                        <div key={message.id} className='flex gap-2 text-slate-600 text-sm mb-4'>
                             {message.role === 'user' && (
                                 <Avatar>
                                     <AvatarFallback>MHD</AvatarFallback>
@@ -33,12 +37,14 @@ export function Chat() {
                             )}
                             <p className='leading-relaxed'>
                                 <span className='block font-bold text-slate-700'>
-                                    {message.role === 'user' ? 'Usuário' : 'AI'}:</span>
+                                    {message.role === 'user' ? 'Usuário' : 'AI'}:
+                                </span>
                                 {message.content}
                             </p>
                         </div>
                     )
                 })}
+                </ScrollArea>
             </CardContent>
             <CardFooter>
                 <form className='w-full flex gap-2' onSubmit={handleSubmit}>

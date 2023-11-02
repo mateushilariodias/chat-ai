@@ -1,3 +1,5 @@
+The project has been completed, but cannot be used due to API quota limitations.
+
 https://ui.shadcn.com/docs/installation/next
 
 https://platform.openai.com/account/api-keys
@@ -5,6 +7,8 @@ https://platform.openai.com/account/api-keys
 https://vercel.com/docs/integrations/openai
 
 https://sdk.vercel.ai/docs/guides/providers/openai
+
+npx shadcn-ui@latest add   
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
